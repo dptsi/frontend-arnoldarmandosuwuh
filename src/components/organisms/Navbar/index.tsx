@@ -15,6 +15,7 @@ import {
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { GiTechnoHeart } from "react-icons/gi";
 import NavLink from "./NavLink";
+import NextLink from "next/link";
 
 const links = [
   { linkName: "Products", path: "/products" },
@@ -35,13 +36,13 @@ const Navbar = () => {
           aria-label=""
         />
         <HStack>
-          <Link href="/">
+          <Link as={NextLink} href="/">
             <Flex alignItems="center">
               <Icon as={GiTechnoHeart} h={6} w={6} color="orange.400" />
               <Text fontWeight="extrabold">Tech Lines</Text>
             </Flex>
           </Link>
-          <HStack as='nav' spacing={4} display={{ base: 'none', md: 'flex' }}>
+          <HStack as="nav" spacing={4} display={{ base: "none", md: "flex" }}>
             {links.map((link) => (
               <NavLink key={link.linkName} path={link.path}>
                 {link.linkName}
@@ -71,7 +72,7 @@ const Navbar = () => {
             <Button
               as={Link}
               m={2}
-              display={{ base: 'none', md: 'inline-flex' }}
+              display={{ base: "none", md: "inline-flex" }}
               href="/registration"
               fontSize="sm"
               fontWeight={600}
@@ -92,7 +93,9 @@ const Navbar = () => {
                 {link.linkName}
               </NavLink>
             ))}
-            <NavLink key='sign up' path="/registration">Sign Up</NavLink>
+            <NavLink key="sign up" path="/registration">
+              Sign Up
+            </NavLink>
           </Stack>
         </Box>
       ) : null}
